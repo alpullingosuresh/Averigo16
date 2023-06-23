@@ -1,0 +1,15 @@
+{
+    'name': 'Averigo Multi users with one email',
+    'version': '16.0.1.0.0',
+    'summary': 'validation for email',
+    'category': 'Human Resource',
+    'author': 'Cybrosys Techno Solutions',
+    'maintainer': 'Cybrosys Techno Solutions',
+    'company': 'Cybrosys Techno Solutions',
+    'website': 'https://www.cybrosys.com',
+    'depends': ['base', 'crm', 'base_averigo'],
+    'license': 'AGPL-3',
+    'installable': True,
+    'application': False,
+    'auto_install': False,
+}
