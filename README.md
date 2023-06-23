@@ -1,2 +1,4 @@
 # Averigo16
-new repository for  Averigo Odoo16 migration
+## base_averigo
+### Model : customer.contract
+name : Char : required
