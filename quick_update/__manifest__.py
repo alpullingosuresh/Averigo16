@@ -1,0 +1,25 @@
+# -*- coding: utf-8 -*-
+{
+    'name': 'Quick Update',
+    'version': '16.0.1.0.0',
+    'summary': '',
+    'category': 'Inventory',
+    'author': 'cybrosys',
+    'maintainer': 'Cybrosys Techno Solutions',
+    'company': 'Cybrosys Techno Solutions',
+    'website': 'https://www.cybrosys.com',
+    'depends': ['web', 'base', 'micro_market'],
+    # 'data': [
+    #     'security/ir.model.access.csv',
+    #     'security/security.xml',
+    #     'views/quick_update_view.xml',
+    #     'views/res_users_view.xml',
+    #     'views/assets.xml',
+    #     'data/data.xml',
+    # ],
+    # 'qweb': ["static/src/xml/button.xml"],
+    'license': 'AGPL-3',
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+}

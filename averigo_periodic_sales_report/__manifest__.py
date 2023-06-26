@@ -8,7 +8,9 @@
     'summary': '',
     "description": """""",
 
-    'depends': ['base', 'micro_market', 'product', 'stock', 'averigo_reports', 'web', 'mail', 'base_averigo', 'single_product_master'],
+    'depends': ['base', 'micro_market', 'product', 'stock', 'averigo_reports',
+                'web', 'web_service', 'mail', 'base_averigo',
+                'single_product_master'],
 
     # 'data': [
     #     # 'security/ir.model.access.csv',
