@@ -163,7 +163,7 @@ hazard_fee :Boolean:
 out_reason :Text:
 special_notes :Tex:
 contract_id :Many2one:
-contract_warning :Boolean: store=True,groups
+contract_warning :Boolean: store,groups
 contracts_count :Integer:
 is_primary :Boolean: default
 duplicate_primary :Boolean:
@@ -187,7 +187,7 @@ last_name :Char:
 role_selection :Selection:
 login :Char:required:
 group_micro_market :Boolean:default
-allow_all_mm :Boolean: default=True
+allow_all_mm :Boolean: default
 group_micro_market_access :Many2many:
 group_user_management :Boolean:default
 group_user_management_access :Many2many:
@@ -519,7 +519,7 @@ crv_tax :Many2one:domain,track_visibility
 container_deposit_amount :Float:digits
 
 type :Selection:default, required
-standard_price :Float:copy=True,inverse,search,digits,groups
+standard_price :Float:copy,inverse,search,digits,groups
 
 ### Model :multiple.uom
 uom_template_id :Many2one:index
@@ -553,7 +553,7 @@ sequence :Integer:default,index
 warehouse_id :Many2one:inverse,domain
 location_id:Many2one:domain,auto_join,ondelete,readonly,required,index,check_company
 quantity :Float: readonly,digits
-inventory_quantity:Float:inverse,groups=,digits
+inventory_quantity:Float:inverse,groups,digits
 reserved_quantity :Float”default,readonly,required digits
 
 ### Model :create.products
@@ -1407,50 +1407,146 @@ is_advance :Boolean:
 
 ## overage_shrinkage_spoilage_report
 ### Model : overage.report
-name = fields.Char:default
-customer_ids = fields.Many2many:domain
-partner_ids = fields.Many2many:
-mm_dom_ids = fields.Many2many:
-mm_ids = fields.Many2many:
-category_ids = fields.Many2many:
-search_string = fields.Char:
-from_date = fields.Date:
-to_date = fields.Date:
-changes = fields.Many2many:domain
-total_cost = fields.Float:
-total_price = fields.Float:
-total_quantity = fields.Integer:
-record_count = fields.Integer:
-company_id = fields.Many2one:default
-division_ids = fields.Many2many:
-dom_division_ids = fields.Many2many:
-currency_id = fields.Many2one:related
-line_ids = fields.One2many:
-state = fields.Selection:default
-product_ids = fields.Many2many:
-product_dom_ids = fields.Many2many:
-report_type = fields.Selection:default
+name :Char:default
+customer_ids :Many2many:domain
+partner_ids :Many2many:
+mm_dom_ids :Many2many:
+mm_ids :Many2many:
+category_ids :Many2many:
+search_string :Char:
+from_date :Date:
+to_date :Date:
+changes :Many2many:domain
+total_cost :Float:
+total_price :Float:
+total_quantity :Integer:
+record_count :Integer:
+company_id :Many2one:default
+division_ids :Many2many:
+dom_division_ids :Many2many:
+currency_id :Many2one:related
+line_ids :One2many:
+state :Selection:default
+product_ids :Many2many:
+product_dom_ids :Many2many:
+report_type :Selection:default
 
 ### Model : overage.report.lines
-mm_id = fields.Many2one:
-user_id = fields.Many2one:
-date = fields.Date:
-product_id = fields.Many2one:
-item_code = fields.Char:related,store
-item_description = fields.Text:related
-category_id = fields.Many2one:related,store
-change_type = fields.Selection:
-qty = fields.Integer:
-company_id = fields.Many2one:default
-currency_id = fields.Many2one:related
-cost = fields.Float:
-total_cost = fields.Float:default
-price = fields.Float:default
-total_price = fields.Float:default
-report_id = fields.Many2one:ondelete
+mm_id :Many2one:
+user_id :Many2one:
+date :Date:
+product_id :Many2one:
+item_code :Char:related,store
+item_description :Text:related
+category_id :Many2one:related,store
+change_type :Selection:
+qty :Integer:
+company_id :Many2one:default
+currency_id :Many2one:related
+cost :Float:
+total_cost :Float:default
+price :Float:default
+total_price :Float:default
+report_id :Many2one:ondelete
 
 ### Model : inventory.change.type
-is_portal_user = fields.Boolean:
+is_portal_user :Boolean:
 
+
+
+## micro_market_fees
+### Model :stock.warehouse
+cc_fees :Float:tracking
+app_fees :Float:tracking
+stored_fund_fees :Float:tracking
+brand_fees :Float:tracking
+management_fees :Float:tracking
+platform_fees :Float:tracking
+platform_fees_type :Selection:required,tracking,default
+platform_fees_per_day :Float:store
+commission_percentage :Float:tracking
+room_cc :Float:tracking
+cash_adj :Float:tracking
+additional_fees1 :Float:tracking
+additional_group1_id :Many2one:tracking
+additional_group1_base_factor :Selection:tracking
+additional_fees2 :Float:tracking
+additional_group2_id :Many2one:tracking
+additional_group2_base_factor :tracking
+additional_fees3 :Float:tracking
+additional_group3_id :Many2one:tracking
+additional_group3_base_factor :Selection:tracking
+group_id :Many2one: tracking
+group_base_factor :Selection:tracking
+group_fees_percentage :Float:tracking
+brand_id :Many2one:tracking
+brand_base_factor :Selection:tracking
+management_id :Many2one:tracking
+management_base_factor :Selection:tracking
+# management_fees_percentage :Float:tracking
+purchasing_group_id :Many2one:tracking
+purchasing_group_base_factor :Selection:tracking
+purchasing_group_fees_percentage :Float:tracking
+national_sales_team_id :Many2one:tracking
+national_sales_base_factor :Selection:tracking
+national_sales_fees_percentage :Float:tracking
+local_sales_team_id :Many2one:tracking
+local_sales_base_factor :Selection:tracking
+local_sales_fees_percentage :Float:tracking
+fees_template_id :Many2one:
+fees_changed :Boolean:
+
+
+### Model :user.session.history
+cc_fees :Float:
+app_fees :Float:
+stored_fund_fees :Float:
+brand_fees :Float:
+management_fees :Float:
+platform_fees :Float:
+fixed_platform :Boolean:
+commission_percentage :Float:
+room_cc :Float:
+cash_adj :Float:
+additional_fees1 :Float:
+additional_group1_id :Many2one:tracking
+additional_group1_base_factor :Selection:tracking
+additional_fees2 :Float:
+additional_group2_id :Many2one:tracking
+additional_group2_base_factor :Selection:tracking
+additional_fees3 :Float:
+additional_group3_id :Many2one:tracking
+additional_group3_base_factor :Selection:tracking
+group_id :Many2one:
+group_base_factor :Selection:
+group_fees_percentage :Float:
+brand_id :Many2one:
+brand_base_factor :Selection:
+management_id :Many2one:
+management_base_factor :Selection:
+# management_fees_percentage :Float:tracking
+purchasing_group_id :Many2one:
+purchasing_group_base_factor :Selection:
+purchasing_group_fees_percentage :Float:
+national_sales_team_id :Many2one:
+national_sales_base_factor :Selection:
+national_sales_fees_percentage :Float:
+local_sales_team_id :Many2one:
+local_sales_base_factor :Selection:
+local_sales_fees_percentage :Float:
+
+### Model :session.product.list
+cost_price :Float:digits
+
+
+
+## averigo_uom
+### Model :custom.uom.types
+name :Char:required
+company_id :Many2one:default
+
+### Model :multiple.uom
+name :Char:reqired
+type :Many2one:required
 
 

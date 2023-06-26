@@ -1,0 +1,16 @@
+{
+    'name': 'AveriGo UoM',
+    'version': '16.0.1.0.0',
+    'category': 'Sales/Sales',
+    'author': 'Cybrosys Techno Solutions',
+    'website': "https://www.cybrosys.com",
+    'company': 'Cybrosys Techno Solutions',
+    'maintainer': 'Cybrosys Techno Solutions',
+    'summary': '',
+    "description": """""",
+    'depends': ['base', 'base_averigo', 'single_product_master', 'sale',
+                'stock'],
+    'data': [],
+    'installable': True,
+    'auto_install': False,
+}
