@@ -9,7 +9,6 @@
     "license": "LGPL-3",
     "installable": True,
     "depends": [
-        'base', 'web', 'contacts', 'base_averigo', 'micro_market',
-        'webservice_image'
+        'base', 'web', 'contacts', 'base_averigo', 'micro_market'
     ]
 }
