@@ -3,15 +3,13 @@
     "description": """Module For Preventing Suspicious Login Attempts""",
     'summary': 'Module For Preventing Suspicious Login Attempts ',
     'category': 'Tools',
-    'version': '13.0.1.0.1',
+    'version': '16.0.1.0.0',
     'author': 'Cybrosys Techno Solutions',
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
     'website': "https://www.cybrosys.com",
     'depends': ['web', 'mail'],
-    'data': [
-
-    ],
+    'data': [],
     'images': ['static/description/banner.png'],
     'license': 'OPL-1',
     'price': '69',

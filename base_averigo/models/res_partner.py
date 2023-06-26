@@ -55,6 +55,9 @@ class ResPartner(models.Model):
     nick_name_view = fields.Char()
     primary_contact_id = fields.Many2one('res.partner')
 
+    _sql_constraints = [("code_uniq", "unique(code, operator_id)",
+                         "Customer # should be unique!")]
+
 
 class ShippingVia(models.Model):
     _name = 'ship.via'

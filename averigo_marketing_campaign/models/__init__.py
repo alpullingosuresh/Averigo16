@@ -1,6 +1,5 @@
 from . import mail_blacklist
 from . import utm_source
-from . import utm_medium
 from . import utm_tag
 from . import utm_stage
 from . import utm_campaign

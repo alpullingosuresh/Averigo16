@@ -11,5 +11,5 @@ class Employee(models.Model):
 class HrEmployeePublicInherit(models.Model):
     _inherit = 'hr.employee.public'
 
-    first_name = fields.Char(compute="_compute_name")
-    last_name = fields.Char(compute="_compute_name")
+    first_name = fields.Char()
+    last_name = fields.Char()

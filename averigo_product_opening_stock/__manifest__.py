@@ -1,6 +1,6 @@
 {
     'name': 'AveriGo Opening Stock',
-    'version': '13.0.1.0',
+    'version': '16.0.1.0.0',
     'category': 'Sales',
     'author': 'Cybrosys Techno Solutions',
     'website': "https://www.cybrosys.com",
@@ -8,9 +8,8 @@
     'maintainer': 'Cybrosys Techno Solutions',
     'summary': '',
     "description": """""",
-    'depends': ['base','stock'],
-    'data': [
-],
+    'depends': ['base', 'stock', 'base_averigo'],
+    'data': [],
     'installable': True,
     'auto_install': False,
 }

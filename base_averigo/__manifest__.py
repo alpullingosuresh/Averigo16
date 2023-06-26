@@ -1,6 +1,6 @@
 {
     'name': 'AveriGo Base',
-    'version': '13.0.1.0',
+    'version': '16.0.1.0.0',
     'category': 'Sales',
     'author': 'Cybrosys Techno Solutions',
     'website': "https://www.cybrosys.com",
@@ -8,10 +8,12 @@
     'maintainer': 'Cybrosys Techno Solutions',
     'summary': '',
     "description": """""",
-    'depends': ['base', 'mail', 'uom', 'hr', 'account', 'purchase',
+    'depends': ['base', 'mail', 'uom', 'hr', 'account', 'purchase', 'stock',
                 'contacts', 'sale', 'web'],
-    'data': [
-    ],
+    'data': [],
+
+    'qweb': [],
+
     'installable': True,
     'auto_install': False,
     "images": ['static/description/banner.jpg'],

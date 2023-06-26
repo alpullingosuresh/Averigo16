@@ -4,7 +4,6 @@ from odoo import models, fields
 class ResDiscountSettings(models.TransientModel):
     _inherit = 'res.config.settings'
 
-    # tax_cloud = fields.Boolean(related="company_id.tax_cloud", readonly=False, default=True)
     tax_cloud_id = fields.Char('Tax Cloud Id', config_parameter='tax_cloud_id')
     tax_cloud_key = fields.Char('Tax Cloud Key',
                                 config_parameter='tax_cloud_key')

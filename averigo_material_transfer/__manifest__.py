@@ -1,0 +1,17 @@
+{
+    'name': 'AveriGo Material Transer',
+    'version': '16.0.1.0.0',
+    'category': 'Inventory',
+    'author': 'Cybrosys Techno Solutions',
+    'website': "https://www.cybrosys.com",
+    'company': 'Cybrosys Techno Solutions',
+    'maintainer': 'Cybrosys Techno Solutions',
+    'summary': '',
+    'installable': True,
+    'auto_install': False,
+    'application': True,
+    "description": """""",
+    'depends': ['base', 'base_averigo', 'single_product_master',
+                'micro_market'],
+    'data': [],
+}

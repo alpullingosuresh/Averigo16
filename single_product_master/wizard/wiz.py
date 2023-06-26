@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class CreateMultiProduct(models.Model):
@@ -14,7 +14,6 @@ class CreateMultiProduct(models.Model):
     get_barcode = fields.Boolean('get_val', default=False)
     res_location = fields.Many2one('stock.warehouse', 'Primary Location')
     primary_location = fields.Many2one('stock.location', 'Primary Location')
-
     type = fields.Selection([
         ('product', 'Product'),
         ('service', 'Service')], default='product')
@@ -36,8 +35,7 @@ class CreateMultiProduct(models.Model):
     is_container_deposit = fields.Boolean('Deposit Tax', default=False)
     upc_code_scan = fields.Char('UPC Code')
     uom_id = fields.Many2one(
-        'uom.uom', ' Base UoM', required=True)
-
+        'uom.uom', ' Base UoM',  required=True)
 
 
 class NewClass(models.Model):
@@ -50,4 +48,3 @@ class NewClass(models.Model):
         default=lambda self: self.env.company)
     name = fields.Char()
     scan_from_gpm = fields.Boolean(default=False)
-

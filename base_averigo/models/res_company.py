@@ -1,4 +1,4 @@
-from odoo import api, models, fields
+from odoo import models, fields
 
 
 class ResCompany(models.Model):
@@ -13,7 +13,7 @@ class ResCompany(models.Model):
     support_email = fields.Char(string="Support Email")
     legal_name = fields.Char(string="Legal Name")
     language = fields.Many2one('res.lang', 'Language', required=True)
-    decimal_precision = fields.Integer('Decimal Precision')
+    decimal_precision = fields.Integer('Decimal Precision', default=2, digits=1)
     date_format = fields.Char(string="Date Format")
     time_format = fields.Char(string="Time Format")
     is_main_company = fields.Boolean(string="Is Main Company", default=False)

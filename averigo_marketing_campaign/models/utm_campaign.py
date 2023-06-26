@@ -23,4 +23,4 @@ class UTMCampaign(models.Model):
                                      currency_field="currency_id")
     campaign_expect = fields.Monetary(string='Money Expect', default=0,
                                       currency_field="currency_id")
-    description = fields.Text()
+    description = fields.Text(size=1000)

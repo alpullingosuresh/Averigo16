@@ -8,4 +8,4 @@ class MailTemplate(models.Model):
                                  default=lambda self: self.env.company)
     active = fields.Boolean(string="Active", default=True)
     default = fields.Boolean(string="Create in new operator")
-    check_company = fields.Boolean(compute='_compute_check_company_group')
+    check_company = fields.Boolean()

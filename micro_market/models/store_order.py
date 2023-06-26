@@ -48,8 +48,7 @@ class StoreOrder(models.Model):
                 'done': [('readonly', True)], 'cancel':
                     [('readonly', True)]})
     scheduled_date = fields.Datetime(
-        'Scheduled Date',
-        inverse='_set_scheduled_date', store=True,
+        'Scheduled Date', inverse='_set_scheduled_date', store=True,
         index=True, default=fields.Datetime.now, tracking=False,
         states={'done': [('readonly', True)], 'cancel': [('readonly', True)]},
         help="Scheduled time for the first part of the shipment to be processed. Setting manually a value here would set it as expected date for all the stock moves.")
@@ -124,9 +123,6 @@ class StoreOrder(models.Model):
                                      'assigned': [('readonly', True)],
                                      'done': [('readonly', True)], 'cancel':
                                          [('readonly', True)]})
-    # show_all = fields.Boolean(states={'confirmed': [('readonly', True)], 'assigned': [('readonly', True)],
-    #                                   'done': [('readonly', True)], 'cancel':
-    #                                       [('readonly', True)]})
     show_all = fields.Boolean(
         states={'assigned': [('readonly', True)], 'done': [('readonly', True)],
                 'cancel': [('readonly', True)]})
@@ -186,11 +182,6 @@ class DetailStoreOrderLine(models.Model):
     _inherit = 'stock.move.line'
 
     # Reserved qty and qty done is changed from float to integer
-
     move_product_ids = fields.Many2many('product.product')
     picked_qty = fields.Integer('Picked Qty')
     store_order = fields.Boolean(store=True, related='picking_id.store_order')
-
-
-class PickingType(models.Model):
-    _inherit = "stock.picking.type"

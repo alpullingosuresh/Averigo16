@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, api, fields
 
 
 class ProductTemplate(models.Model):
@@ -6,4 +6,3 @@ class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
     enable_product_code = fields.Boolean()
-

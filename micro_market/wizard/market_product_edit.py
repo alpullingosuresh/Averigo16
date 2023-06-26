@@ -7,7 +7,6 @@ class ProductTaxChange(models.TransientModel):
 
     micro_market_id = fields.Many2one('stock.warehouse')
     product_id = fields.Many2one('product.micro.market', string='Product')
-    # select_products = fields.Boolean('Select Products')
     product_ids = fields.Many2many('product.micro.market',
                                    string='Selected Products')
 
@@ -19,7 +18,6 @@ class ProductUnitChange(models.TransientModel):
     micro_market_id = fields.Many2one('stock.warehouse')
     product_id = fields.Many2one('product.micro.market', string='Product')
     uom_category = fields.Integer()
-    # select_products = fields.Boolean('Select Products')
     product_ids = fields.Many2many('product.micro.market',
                                    string='Selected Products')
 
@@ -30,7 +28,6 @@ class ProductPriceChange(models.TransientModel):
 
     micro_market_id = fields.Many2one('stock.warehouse')
     product_id = fields.Many2one('product.micro.market', string='Product')
-    # select_products = fields.Boolean('Select Products')
     product_ids = fields.Many2many('product.micro.market',
                                    string='Selected Products')
 
@@ -41,7 +38,6 @@ class ProductMinimumChange(models.TransientModel):
 
     micro_market_id = fields.Many2one('stock.warehouse')
     product_id = fields.Many2one('product.micro.market', string='Product')
-    # select_products = fields.Boolean('Select Products')
     product_ids = fields.Many2many('product.micro.market',
                                    string='Selected Products')
 
@@ -52,6 +48,5 @@ class ProductMaximumChange(models.TransientModel):
 
     micro_market_id = fields.Many2one('stock.warehouse')
     product_id = fields.Many2one('product.micro.market', string='Product')
-    # select_products = fields.Boolean('Select Products')
     product_ids = fields.Many2many('product.micro.market',
                                    string='Selected Products')

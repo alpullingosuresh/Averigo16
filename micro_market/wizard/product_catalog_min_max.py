@@ -7,7 +7,6 @@ class ProductMinimumChange(models.TransientModel):
 
     catalog_id = fields.Many2one('product.catalog')
     product_id = fields.Many2one('product.product.catalog', string='Product')
-    # select_products = fields.Boolean('Select Products')
     product_ids = fields.Many2many('product.product.catalog',
                                    string='Selected Products')
 
@@ -18,6 +17,5 @@ class ProductMaximumChange(models.TransientModel):
 
     catalog_id = fields.Many2one('product.catalog')
     product_id = fields.Many2one('product.product.catalog', string='Product')
-    # select_products = fields.Boolean('Select Products')
     product_ids = fields.Many2many('product.product.catalog',
                                    string='Selected Products')

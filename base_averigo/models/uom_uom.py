@@ -1,5 +1,5 @@
-from odoo import fields, models
 
+from odoo import fields, models
 
 class UomUom(models.Model):
     _inherit = 'uom.uom'

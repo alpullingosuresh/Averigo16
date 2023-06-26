@@ -1,5 +1,4 @@
-from odoo import api, fields, models
-
+from odoo import  fields, models
 
 class CustomerContract(models.Model):
     _name = 'customer.contract'
@@ -17,11 +16,8 @@ class CustomerContract(models.Model):
     date_end = fields.Date('End Date',
                            help="End date of the contract (if it's a fixed-term contract).")
     advantages = fields.Text('Advantages')
-    attachment_ids = fields.Many2many('ir.attachment',
-                                      'contract_attachment_rel', 'contract_id',
-                                      'attachment_id',
-                                      string='Attachments',
-                                      track_visibility="onchange")
+    attachment_ids = fields.Many2many('ir.attachment', 'contract_attachment_rel', 'contract_id', 'attachment_id',
+                                      string='Attachments', track_visibility="onchange")
     notes = fields.Text('Notes')
     state = fields.Selection([
         ('draft', 'New'),
@@ -47,3 +43,4 @@ class CustomerContract(models.Model):
     currency_id = fields.Many2one(string="Currency",
                                   related='company_id.currency_id',
                                   readonly=True)
+

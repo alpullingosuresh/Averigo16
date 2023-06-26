@@ -1,4 +1,4 @@
-from odoo import api, fields, models
+from odoo import  fields, models
 
 
 class ResUsers(models.Model):
@@ -87,6 +87,8 @@ class ResUsers(models.Model):
     group_operator_report = fields.Boolean(string="Report", default=True)
     menu_id = fields.Many2one('ir.ui.menu', string="Menu")
     menu_ids = fields.Many2many('ir.ui.menu', string="Menus")
+
+
 
 
 class AccessPermissions(models.Model):

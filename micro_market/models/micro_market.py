@@ -140,6 +140,7 @@ class MicroMarketWarehouse(models.Model):
     special_notes = fields.Text(tracking=True)
     current_date = fields.Date(default=fields.Date.today)
     route = fields.Many2one('route.route', tracking=True)
+    # frequency_id = fields.Many2one('route.frequency', tracking=True)
     frequency = fields.Many2one('transaction.recurring', tracking=True,
                                 copy=False)
     tax = fields.Many2one('account.tax')
@@ -147,6 +148,7 @@ class MicroMarketWarehouse(models.Model):
     tax_warning = fields.Text('No sales tax is updated for this Micro Market')
     from_customer = fields.Boolean()
     last_ordered_warehouse = fields.Many2one('stock.warehouse')
+    # select_products = fields.Boolean()
     truck_driver = fields.Many2one('hr.employee')
     show_tax_warning = fields.Boolean()
     micro_market_products_count = fields.Integer()
@@ -227,6 +229,7 @@ class MicroMarketProduct(models.Model):
                                  related='micro_market_id.company_id')
     sales_tax = fields.Float(store=True, related='micro_market_id.sales_tax',
                              digits='Product Price')
+    sales_tax_amount = fields.Float(store=True, digits='Product Price')
     discontinued_date = fields.Date()
     discontinued_user = fields.Char(
         help='Name of the user who discontinued the product')
@@ -286,7 +289,7 @@ class MarketMultipleUom(models.Model):
     product_id = fields.Many2one('product.product',
                                  domain="[('multiple_uom', '=', True)]")
     uom_id = fields.Many2one('uom.uom', string='UOM')
-    uom_ids = fields.Many2many('uom.uom')
+    uom_ids = fields.Many2many('uom.uom', string='Product UOMs')
     multiple_uom_ids = fields.Many2many('multiple.uom')
     multiple_uom_id = fields.Many2one('multiple.uom')
     add_product = fields.Boolean('Add', default=True)

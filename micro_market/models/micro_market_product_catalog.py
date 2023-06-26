@@ -27,7 +27,7 @@ class ProductCatalog(models.Model):
         ('micro_market', 'Micro Market'),
         ('customer', 'Customer')], string='Catalog Type',
         default='micro_market', required=True, tracking=True)
-    show_wizard = fields.Boolean()
+    show_wizard = fields.Boolean(store=True)
     changed_catalog_ids = fields.Many2many('product.product.catalog')
 
 
@@ -80,10 +80,8 @@ class CatalogMultipleUom(models.Model):
     product_id = fields.Many2one('product.product',
                                  domain="[('multiple_uom', '=', True)]")
     uom_id = fields.Many2one('uom.uom', string='UOM')
-    uom_ids = fields.Many2many('uom.uom',
-                               string='Product UOMs')
+    uom_ids = fields.Many2many('uom.uom', string='Product UOMs')
     multiple_uom_ids = fields.Many2many('multiple.uom')
-
     multiple_uom_id = fields.Many2one('multiple.uom')
     add_product = fields.Boolean('Add', default=True)
     add_to_mm = fields.Boolean('Add To MM')

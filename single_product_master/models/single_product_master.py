@@ -1,4 +1,3 @@
-
 from odoo import models, fields
 
 
@@ -15,15 +14,18 @@ class UpcChangeHistory(models.Model):
 class SingleProductMaster(models.Model):
     _inherit = 'product.template'
 
+
     upc_change_history = fields.One2many('upc.code.history', 'product_id')
 
     categ_id = fields.Many2one(
         'product.category', 'Product Category',
-        change_default=True,
-        required=True, help="Select category for the current product", tracking=True)
+        change_default=True, group_expand='_read_group_categ_id',
+        required=True, help="Select category for the current product",
+        tracking=True)
     product_type = fields.Selection([
         ('product', 'Product'),
-        ('service', 'Service')], string='Product Type', default='product', required=True)
+        ('service', 'Service')], string='Product Type', default='product',
+        required=True)
 
     primary_upc = fields.Char(string='UPC Code')
     upc_code = fields.Many2one('global.product.master', string='GPM UPC Code')
@@ -32,54 +34,71 @@ class SingleProductMaster(models.Model):
         default=lambda self: self.env.company)
     product_code = fields.Char('Product Code', tracking=True)
     default_code = fields.Char('Product Code', tracking=True)
-    tax_status = fields.Selection([('yes', 'Yes'), ('no', 'No')], 'Taxable Status', default='yes')
-    list_price_1 = fields.Float('List Price 1', digits='Product Price', tracking=True)
-    list_price_2 = fields.Float('List Price 2', digits='Product Price', tracking=True)
-    list_price_3 = fields.Float('List Price 3', digits='Product Price', tracking=True)
-    sale_acc = fields.Many2one('account.account', 'Sales Account', tracking=True)
+    tax_status = fields.Selection([('yes', 'Yes'), ('no', 'No')],
+                                  'Taxable Status', default='yes')
+    list_price_1 = fields.Float('List Price 1', digits='Product Price',
+                                tracking=True)
+    list_price_2 = fields.Float('List Price 2', digits='Product Price',
+                                tracking=True)
+    list_price_3 = fields.Float('List Price 3', digits='Product Price',
+                                tracking=True)
+    sale_acc = fields.Many2one('account.account', 'Sales Account',
+                               tracking=True)
     vendor = fields.Many2one('res.partner', 'Preferred Vendor', tracking=True)
     cost_price = fields.Float('Price', digits='Product Price')
     cogs_acc = fields.Many2one('account.account', 'COGS Account', tracking=True)
-    inventory_acc = fields.Many2one('account.account', 'Inventory Account', tracking=True)
+    inventory_acc = fields.Many2one('account.account', 'Inventory Account',
+                                    tracking=True)
     res_location = fields.Many2one('stock.warehouse', 'Primary Location')
     primary_location = fields.Many2one('stock.location', 'Primary Location')
-    primary_locations = fields.Many2many('stock.location')
-    res_partner = fields.Many2one('res.partner', 'Preferred Vendor', tracking=True)
+    # primary_location = fields.Many2one('stock.location', 'Primary Location',
+    #                                    default=_get_primary_location)
+    res_partner = fields.Many2one('res.partner', 'Preferred Vendor',
+                                  tracking=True)
     res_manufacturer = fields.Many2one('res.partner', 'Manufacturer')
     manufacturer = fields.Text(string='Manufacturer', tracking=True)
-    product_uom_ids = fields.One2many('multiple.uom', 'uom_template_id', string="Add Multiple UoM",
+    product_uom_ids = fields.One2many('multiple.uom', 'uom_template_id',
+                                      string="Add Multiple UoM",
                                       copy=True, tracking=True)
-    upc_ids = fields.One2many('upc.code.multi', 'upc_id', string="UPC Codes", ondelete='cascade', tracking=True,
+    upc_ids = fields.One2many('upc.code.multi', 'upc_id', string="UPC Codes",
+                              ondelete='cascade', tracking=True,
                               track_visibility='always')
     get_barcode = fields.Boolean('get_val', default=False)
     upc_codes = fields.Many2many('upc.code.multi', string='UPCs for Scanning')
     # litre_type = fields.Float('Litre Type')
-    litre_type = fields.Selection([('less_than_750', 'Less than 710 ml'), ('greater_710', 'Greater 710 ml')],
+    litre_type = fields.Selection([('less_than_750', 'Less than 710 ml'),
+                                   ('greater_710', 'Greater 710 ml')],
                                   'Litre Type')
     fluid_ounce = fields.Float('Fluid Ounce', digits='Product Price')
     multiple_uom = fields.Boolean('Multiple UoM', default=False)
     is_container_tax = fields.Boolean('Container Deposit', default=False)
     mnp_id = fields.Char('MPN')
-    stock_open = fields.Float('Open Stock', tracking=True, digits='Product Unit of Measure')
+    stock_open = fields.Float('Open Stock', tracking=True,
+                              digits='Product Unit of Measure')
     reorder_point = fields.Integer('Micromarket Min', default=1, tracking=True)
     reorder_qty = fields.Integer('Micromarket Max', default=1, tracking=True)
     min_qty = fields.Integer('Warehouse Min', default=1, tracking=True)
     max_qty = fields.Integer('Warehouse Max', default=1, tracking=True)
-    rate_per_uint = fields.Float('Opening Stock Rate Per Unit', digits='Product Price')
+    rate_per_uint = fields.Float('Opening Stock Rate Per Unit',
+                                 digits='Product Price')
     get_upc_code = fields.Boolean('get_upc_code', default=False)
     is_sugar_tax = fields.Boolean('Sugar Tax', default=False)
     is_container_deposit = fields.Boolean('Deposit Tax', default=False)
-    product_image_ids = fields.One2many('extra.image', 'product_tmple_id', string="Extra Product Media",
+    product_image_ids = fields.One2many('extra.image', 'product_tmple_id',
+                                        string="Extra Product Media",
                                         copy=True)
     last_purchase_date = fields.Date()
     # crv_tax = fields.Float('CRV')
-    crv_tax = fields.Many2one('account.tax', string='Container Deposit Tax', domain="[('crv', '=',  True)]",
+    crv_tax = fields.Many2one('account.tax', string='Container Deposit Tax',
+                              domain="[('crv', '=',  True)]",
                               track_visibility='onchange')
-    container_deposit_amount = fields.Float('Container Deposit Amount', digits='Product Price')
+    container_deposit_amount = fields.Float('Container Deposit Amount',
+                                            digits='Product Price')
 
     type = fields.Selection([
 
-        ('consu', 'Consumable'), ('service', 'Service'), ('product', 'Storable Product')],
+        ('consu', 'Consumable'), ('service', 'Service'),
+        ('product', 'Storable Product')],
         string='Product Type', default='product', required=True,
         help='A storable product is a product for which you manage stock. The Inventory app has to be installed.\n'
              'A consumable product is a product for which stock is not managed.\n'
@@ -93,8 +112,6 @@ class SingleProductMaster(models.Model):
             In FIFO: value of the last unit that left the stock (automatically computed).
             Used to value the product when the purchase cost is not known (e.g. inventory adjustment).
             Used to compute margins on sale orders.""")
-
-
 
 
 class ProductUoM(models.Model):
@@ -130,9 +147,12 @@ class UPCCode(models.Model):
     upc_id = fields.Many2one('product.template')
     product_company_id = fields.Many2one(related='upc_id.company_id')
     operator_id = fields.Many2one(
-        'res.company', 'Operator', required=True, default=lambda self: self.env.company)
-
-
+        'res.company', 'Operator', required=True,
+        default=lambda self: self.env.company)
+    _sql_constraints = [
+        ('upc_operator_uniq', 'unique(operator_id, upc_code_id)',
+         'UPC Code already used by other product!'),
+    ]
 
 
 class ExtraImages(models.Model):
@@ -143,6 +163,6 @@ class ExtraImages(models.Model):
 
     name = fields.Char("Name", required=True)
     image_1920 = fields.Image("Image", required=True)
-    product_tmple_id = fields.Many2one('product.template', "Product Template", index=True, ondelete='cascade')
+    product_tmple_id = fields.Many2one('product.template', "Product Template",
+                                       index=True, ondelete='cascade')
     sequence = fields.Integer(default=10, index=True)
-
