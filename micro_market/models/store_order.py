@@ -42,7 +42,8 @@ class StoreOrder(models.Model):
                                                [('readonly', True)]})
     partner_id = fields.Many2one(
         'res.partner', 'Customer',
-        check_company=True, domain="[('id', 'in', partner_ids)]",
+        check_company=True,
+        # , domain="[('id', 'in', partner_ids)]",
         states={'confirmed': [('readonly', True)],
                 'assigned': [('readonly', True)],
                 'done': [('readonly', True)], 'cancel':

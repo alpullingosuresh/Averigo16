@@ -8,9 +8,6 @@ class UoMCustomTypes(models.Model):
     company_id = fields.Many2one('res.company',
                                  default=lambda self: self.env.company)
 
-    _sql_constraints = [
-        ("name", "unique(name, company_id)", "Name must be unique!")]
-
 
 class ProductUoM(models.Model):
     _inherit = 'multiple.uom'
