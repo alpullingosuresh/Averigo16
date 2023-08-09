@@ -1,0 +1,22 @@
+{
+    "name": "Averigo Sales Order",
+    "summary": "Sales Order",
+    "version": "16.0.1.0.0",
+    "category": "",
+    "website": "http://www.cybrosys.com",
+    "description": """Averigo Sales Order""",
+    'images': [],
+    "author": "Cybrosys Techno Solutions Pvt Ltd.",
+    "license": "LGPL-3",
+    "depends": [
+        'base', 'base_averigo', 'sale_management', 'purchase', 'micro_market',
+        'calendar', 'averigo_purchase',
+        'stock_dropshipping', 'delivery',
+        'stock', 'stock_picking_batch',
+        'averigo_accounting',
+    ],
+    "data": [],
+    "qweb": [],
+    "installable": True,
+    "application": True,
+}

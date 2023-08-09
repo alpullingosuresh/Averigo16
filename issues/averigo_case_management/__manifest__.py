@@ -1,0 +1,16 @@
+{
+    "name": "Averigo Case Management",
+    "version": "16.0.1.0.0",
+    "license": "AGPL-3",
+    "author": "Cybrosys Techno Solutions Pvt Ltd.",
+    "website": "http://www.cybrosys.com",
+    "category": "Accounting & Finance",
+    "depends": ['account', 'base_averigo', 'micro_market', 'averigo_accounting',
+                'averigo_service_management',
+                'account_asset_management',
+                'averigo_security', 'hr'],
+    "data": [],
+    'qweb': [],
+    "content_security_policy": "default-src 'self' style-src 'self' 'unsafe-inline';",
+    "external_dependencies": {"python": ["python-dateutil"]},
+}

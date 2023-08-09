@@ -1,0 +1,15 @@
+{
+    'name': 'AveriGo Recurring Mail SendGrid',
+    'version': '16.0.1.0.0',
+    'category': 'Tools',
+    'author': 'Cybrosys Techno Solutions',
+    'website': "https://www.cybrosys.com",
+    'company': 'Cybrosys Techno Solutions',
+    'maintainer': 'Cybrosys Techno Solutions',
+    'summary': '',
+    "description": """Averigo Recurring""",
+    'depends': ['base', 'averigo_recurring'],
+    'data': [],
+    'installable': True,
+    'auto_install': False,
+}
